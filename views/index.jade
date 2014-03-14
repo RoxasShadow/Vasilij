@@ -44,15 +44,15 @@ html(lang='en')
         <% _.each(files, function(f) { %>
           <li>
             <a
-              href            = "../#{config.path}/<%= f.url %>"
-              data-largesrc   = "../#{config.path}/<%= f.url %>"
+              href            = "<%= f.url %>"
+              data-largesrc   = "<%= f.url %>"
               data-title      = "<%= f.url.split('/').pop().split('.')[0] %>"
               data-description= "
                 <b>Size:           </b> <%= humanize.filesize(f.size)              %><br>
                 <b>MIME:           </b> <%= f.mime                                 %><br>
                 <b>Created the:    </b> <%= humanize.naturalDay(new Date(f.ctime)) %><br>
                 <b>Modificated the:</b> <%= humanize.naturalDay(new Date(f.mtime)) %>">
-                  <img src="../#{config.path}/<%= f.url %>" width="250" height="250">
+                  <img src="<%= f.url %>" width="250" height="250">
             </a>
           </li>
         <% }); %>
