@@ -1,0 +1,80 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(http-equiv='X-UA-Compatibleviewport', content='IE=edge'       )
+
+    title= title
+
+    link(rel='stylesheet' href='/stylesheets/bootstrap.min.css'        )
+    link(rel='stylesheet' href='/stylesheets/style.css'                )
+
+    link(rel='stylesheet' href='/stylesheets/grid/default.css'         )
+    link(rel='stylesheet' href='/stylesheets/grid/component.css'       )
+
+    script(src='/javascripts/grid/modernizr.custom.js')
+
+    script(data-curl-run='/javascripts/run.js' src='/javascripts/lib/curl/src/curl.js')
+    script(type='text/html' id='improvisation-template').
+      <ul class="og-grid">
+        <% if(typeof files != 'undefined' && files.length > 0) { %>
+          <% $('#uplevel').show() %>
+        <% } else { %>
+          <% $('#uplevel').hide() %>
+        <% } %>
+
+        <% if(typeof dirs != 'undefined' && dirs.length > 0) { %>
+          <% _.each(dirs, function(d) { %>
+            <li>
+              <a href="#/wall/<%= d.name %>">
+                <%= d.name %>
+                <img src="<%= d.contents.slice(-1) %>" width="250" height="250"><br>
+              </a>
+            </li>
+          <% }); %>
+          <hr>
+        <% } %>
+      </ul>
+
+      <ul id="og-grid" class="og-grid"></ul>
+    
+    script(type='text/html' id='improvisation-grid-template').
+      <% if(typeof files != 'undefined') { %>
+        <% _.each(files, function(f) { %>
+          <li>
+            <a
+              href            = "../#{config.path}/<%= f.url %>"
+              data-largesrc   = "../#{config.path}/<%= f.url %>"
+              data-title      = "<%= f.url.split('/').pop().split('.')[0] %>"
+              data-description= "
+                <b>Size:           </b> <%= humanize.filesize(f.size)              %><br>
+                <b>MIME:           </b> <%= f.mime                                 %><br>
+                <b>Created the:    </b> <%= humanize.naturalDay(new Date(f.ctime)) %><br>
+                <b>Modificated the:</b> <%= humanize.naturalDay(new Date(f.mtime)) %>">
+                  <img src="../#{config.path}/<%= f.url %>" width="250" height="250">
+            </a>
+          </li>
+        <% }); %>
+      <% } %>
+  body
+    div.navbar.navbar-inverse.navbar-fixed-top(role='navigation')
+      div.navbar-header
+        a.navbar-brand(href='#')= title
+      div.navbar-collapse.collapse
+        ul.nav.navbar-nav
+          li
+            p#uplevel
+              a(href="#")= '↑ Up a Level'
+
+    div.container(role='main')
+      div.contents
+        h1#title
+        div.improvisation.main
+
+    script(src='/javascripts/lib/jquery/jquery.min.js')
+    script(src='/javascripts/grid/grid.js'            )
+    script.
+      $(function() {
+        Grid.init();
+      });

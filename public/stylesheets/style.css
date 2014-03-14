@@ -1,0 +1,42 @@
+hr {
+  margin-top      : 80px;
+  background-color: #eee;
+  height          : 1px;
+}
+
+h1 {
+  margin-bottom: -20px;
+}
+
+.contents {
+  padding   : 40px 15px;
+  text-align: center;
+}
+
+.navbar p {
+  font-weight: 300;
+  font-size  : 18px;
+  line-height: 15px;
+  padding-top: 15px;
+  display    : none;
+}
+
+.navbar a {
+  color: #999999;
+}
+
+@media(min-width: 768px) {
+  .navbar .navbar-nav {
+    display: inline-block;
+    float  : none;
+  }
+
+  .navbar .navbar-collapse {
+    text-align: center;
+  }
+}
+
+.og-grid li > a,
+.og-grid li > a img {
+  padding-bottom: 20px;
+}
