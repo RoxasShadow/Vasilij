@@ -9,8 +9,8 @@ var config = {};
 // Your images folder
 config.path  = '../images';
 
-// Set the following line to false if you have a webserver that serves you static resources.
-// Your images will be available to /dirname/, where dirname is the name of your images folder.
+// Set the following line to false if you have a webserver that serves you static resources or you have just put your images folder in public/.
+// Your images will be available to /dirname/ (where dirname is the name of your images folder).
 config.serve = true;
 
 // The image extensions to show
