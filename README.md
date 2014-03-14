@@ -14,6 +14,7 @@ After having configured `config.js`, *Vasilij* prints a JSON containing the dire
 Usage
 -----
 `$ npm install`
+
 `$ npm start`
 
 [Demo](http://vasilij.giovannicapuano.net)
