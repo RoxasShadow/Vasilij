@@ -11,7 +11,7 @@ Until I don't implement the things in `TODO`, *Vasilij* will be veeeeeeeery slow
 
 What it does
 ------------
-After you have configured `config.js`, *Vasilij* prints a JSON containing the directory tree of given path, making eventually thumbnails for folders which have no one.
+After you have configured `config.js`, *Vasilij* provides APIs that output a JSON string containing the directory tree of given path, making eventually thumbnails for folders which have no one.
 
 *Improvisation* makes a grid with these infos with some wizardries and... that's it.
 
