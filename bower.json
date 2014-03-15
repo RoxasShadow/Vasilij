@@ -1,0 +1,16 @@
+{
+  "name"    : "vasilij",
+  "homepage": "https://github.com/RoxasShadow/Vasilij",
+  "authors" : [
+    "Giovanni Capuano <webmaster@giovannicapuano.net>"
+  ],
+  "description": "MUH gallery, MUH nodejs, MUH backbone, MUH MIT, MUH mainstream!",
+  "license"    : "MIT",
+  "dependencies": {
+    "backbone-amd": "~1.1.0",
+    "curl"        : "~0.8.4",
+    "humanize"    : "~0.0.9",
+    "jquery"      : "~2.0.3",
+    "lodash"      : "~1.3.1"
+  }
+}
