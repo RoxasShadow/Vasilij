@@ -87,11 +87,14 @@ html(lang='en')
 
     div.container(role='main')
       div.contents
-        h1#title
+        div.row
+          div.col-xs-6.col-sm-4
 
-        div#search.pull-right
-          input.typeahead(type="text" placeholder="Search")
-        br
+          div.col-xs-6.col-sm-4
+            h1#title
+
+          div#search.col-xs-6.col-sm-4
+            input.typeahead(type="text" placeholder="Search")
 
         div.improvisation.main
 
