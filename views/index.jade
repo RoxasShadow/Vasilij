@@ -55,7 +55,7 @@ html(lang='en')
             <a
               href            = "<%= f.url %>"
               data-largesrc   = "<%= f.url %>"
-              data-title      = "<%= f.url.split('/').pop().split('.')[0] %>"
+              data-title      = "<%= f.url.split('/').pop().split('.').slice(0, -1) %>"
               data-description= "
                 <b>Size:      </b> <%= humanize.filesize(f.size)              %><br>
                 <b>MIME:      </b> <%= f.mime                                 %><br>
