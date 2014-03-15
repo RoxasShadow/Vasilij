@@ -122,4 +122,9 @@ html(lang='en')
           displayKey: 'value',
           source    : images.ttAdapter()
         });
+
+        $('#search .typeahead').on('typeahead:selected', function(e, s) {
+          window.open(s.value);
+          $('#search .typeahead').val('');
+        });
       });

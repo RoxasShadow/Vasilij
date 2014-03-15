@@ -43,11 +43,6 @@ define(function(require) {
       new Blazy({
         selector: '.lazy'
       });
-
-      $('.typeahead').on('change', function(e) {
-        var path = e.target.value;
-        window.open(path);
-      });
     }
 	});
 })
