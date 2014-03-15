@@ -20,21 +20,19 @@ exports.list = function(req, res) {
 
   folder.list(dir, function(folders) {
 
-    if(config.thumbs.enabled) {
-      folders.dirs.forEach(function(dir) {
-        var destination = config.thumbs.path + '/' + dir.name;
-        if(!fs.existsSync(destination))
-          mkdirp.sync(destination);
+    folders.dirs.forEach(function(dir) {
+      var destination = config.thumbs.path + '/' + dir.name;
+      if(!fs.existsSync(destination))
+        mkdirp.sync(destination);
 
-        thumb({
-          source     : dir.url,
-          destination: destination,
-          concurrency: config.thumbs.cpu,
-          width      : config.thumbs.width,
-          suffix     : ''
-        });
+      thumb({
+        source     : dir.url,
+        destination: destination,
+        concurrency: config.thumbs.cpu,
+        width      : config.thumbs.width,
+        suffix     : ''
       });
-    }
+    });
 
     switch(config.sort.by) {
     case 'name':

@@ -23,7 +23,6 @@ config.sort  = {
 }
 
 config.thumbs = {
-  enabled: true,
   path   : '../thumbs',
   width  : 500,
   cpu    : 8

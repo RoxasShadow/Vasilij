@@ -3,9 +3,7 @@
  * Released under the MIT License
  * http://opensource.org/licenses/MIT
  */
- 
-var config = require('../config');
 
 exports.index = function(req, res) {
-  res.render('index', { title: 'Vasilij', config: config });
+  res.render('index', { title: 'Vasilij' });
 };

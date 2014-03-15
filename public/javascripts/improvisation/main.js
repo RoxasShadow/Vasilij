@@ -15,7 +15,6 @@ define(function(require) {
   var prevId = '';
 
   router.on('route:getWall', function(id) {
-    console.log(id);
     if(id == '../') {
       var params = prevId.split('/');
           id     = params[params.length - 2];

@@ -32,7 +32,12 @@ html(lang='en')
             <li>
               <a href="#/wall/<%= d.name %>">
                 <%= d.name %>
-                <img src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw== class="lazy" data-src="<%= d.contents.slice(-1) %>" width="250" height="250"><br>
+                <img
+                  src     = data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
+                  class   = "lazy"
+                  data-src= "<%= d.contents.slice(-1) %>"
+                  width   = "250"
+                  height  = "250"><br>
               </a>
             </li>
           <% }); %>
@@ -55,7 +60,12 @@ html(lang='en')
                 <b>MIME:           </b> <%= f.mime                                 %><br>
                 <b>Created the:    </b> <%= humanize.naturalDay(new Date(f.ctime)) %><br>
                 <b>Modificated the:</b> <%= humanize.naturalDay(new Date(f.mtime)) %>">
-                  <img src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw== class="lazy" data-src="<%= f.thumb %>" width="250" height="250">
+                  <img
+                  src     = data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
+                  class   = "lazy"
+                  data-src= "<%= f.thumb %>"
+                  width   = "250"
+                  height  = "250">
             </a>
           </li>
         <% }); %>

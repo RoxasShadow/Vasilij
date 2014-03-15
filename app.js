@@ -22,10 +22,8 @@ if(config.serve) {
   var folder = config.path.split('/').pop();
   app.get('/' + folder + '/*', folders.img);
 
-  if(config.thumbs.enabled) {
-    var thumb = config.thumbs.path.split('/').pop();
-    app.get('/' + thumb + '/*', folders.thumb);
-  }
+  var thumb = config.thumbs.path.split('/').pop();
+  app.get('/' + thumb  + '/*', folders.thumb);
 }
 
 app.use(express.static(path.join(__dirname, 'public')));
