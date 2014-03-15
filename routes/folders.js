@@ -69,7 +69,7 @@ exports.search = function(req, res) {
 };
 
 exports.img = function(req, res) {
-  var file    = config.path + '/' + req.params[0];
+  var file    = config.images.path + '/' + req.params[0];
   var ext     = req.params[0].split('.');
   var img     = fs.readFileSync(file);
   var headers = {

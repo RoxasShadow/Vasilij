@@ -6,8 +6,11 @@
  
 var config = {};
 
-// Your images folder
-config.path  = '../images';
+// Images configuration
+config.images = {
+  path: '../images',
+  url : '/images'
+};
 
 // Set the following line to false if you have a webserver that serves you static resources or you have just put your images folder in public/.
 // Your images will be available to /dirname/ (where dirname is the name of your images folder).

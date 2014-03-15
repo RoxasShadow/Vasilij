@@ -11,7 +11,7 @@ var walk = require('walk');
 
 function Folder(config) {
   this.list = function(dir, callback) {
-    dir = config.path + '/' + dir;
+    dir = config.images.path + '/' + dir;
     if(dir.slice(-1) == '/')
       dir = dir.substring(0, dir.length - 1);
 
@@ -30,7 +30,7 @@ function Folder(config) {
         
         var fileInfo = {
           url  : r,
-          name : r.split(config.path)[1],
+          name : r.split(config.images.path)[1],
           atime: file.atime,
           mtime: file.mtime,
           ctime: file.ctime
@@ -44,12 +44,12 @@ function Folder(config) {
           tag            = 'files';
           fileInfo.size  = file.size;
           fileInfo.mime  = mime.lookup(r);
-          fileInfo.thumb = r.replace(config.path, config.thumbs.path);
+          fileInfo.thumb = r.replace(config.images.path, config.thumbs.path);
         }
         else {
           tag               = 'dirs';
           fileInfo.contents = fs.readdirSync(r).map(function(s) {
-            return r.replace(config.path, config.thumbs.path) + '/' + s;
+            return r.replace(config.images.path, config.thumbs.path) + '/' + s;
           });
         }
 
@@ -61,7 +61,7 @@ function Folder(config) {
   };
 
   this.search = function(keyword, callback) {
-    var dir      = config.path;
+    var dir      = config.images.path;
     var contents = [];
     var walker   = walk.walk(dir);
         keyword  = keyword.toUpperCase();

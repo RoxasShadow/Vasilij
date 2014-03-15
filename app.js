@@ -20,14 +20,15 @@ app.get('/folders/*', folders.list  );
 app.get('/search/*',  folders.search);
 
 if(config.serve) {
-  var folder = config.path.split('/').pop();
+  var folder = config.images.path.split('/').pop();
   app.get('/' + folder + '/*', folders.img);
 
   var thumb = config.thumbs.path.split('/').pop();
   app.get('/' + thumb  + '/*', folders.thumb);
+  
+  app.use(express.static(path.join(__dirname, 'public')));
 }
 
-app.use(express.static(path.join(__dirname, 'public')));
 app.use(app.router);
 
 app.use(function(req, res, next) {
