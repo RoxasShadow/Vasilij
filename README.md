@@ -18,8 +18,9 @@ After you have configured `config.js`, *Vasilij* provides APIs that output a JSO
 Usage
 -----
 ```
-$ npm install
-$ npm start
+$ npm   install
+$ bower install
+$ npm   start
 ```
 
 [Demo](http://vasilij.giovannicapuano.net)
