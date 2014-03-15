@@ -30,6 +30,11 @@ exports.list = function(req, res) {
         concurrency: config.thumbs.cpu,
         width      : config.thumbs.width,
         suffix     : ''
+      }, function(err) {
+        if(err === undefined)
+          console.dir('All done!');
+        else
+          console.dir(err);
       });
     });
 
