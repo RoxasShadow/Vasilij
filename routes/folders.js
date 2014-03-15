@@ -19,7 +19,6 @@ exports.list = function(req, res) {
   var sorting = new Sorting();
 
   folder.list(dir, function(folders) {
-
     folders.dirs.forEach(function(dir) {
       var destination = config.thumbs.path + '/' + dir.name;
       if(!fs.existsSync(destination))
@@ -52,6 +51,15 @@ exports.list = function(req, res) {
     default:
       res.json(folders);
     }
+  });
+};
+
+exports.search = function(req, res) {
+  var keyword = req.params[0];
+  var folder  = new Folder(config);
+
+  folder.search(keyword, function(files) {
+    res.json(files);
   });
 };
 

@@ -9,6 +9,7 @@ html(lang='en')
 
     link(rel='stylesheet' href='/stylesheets/bootstrap.min.css'        )
     link(rel='stylesheet' href='/stylesheets/style.css'                )
+    link(rel='stylesheet' href='/stylesheets/search.css'               )
 
     link(rel='stylesheet' href='/stylesheets/grid/default.css'         )
     link(rel='stylesheet' href='/stylesheets/grid/component.css'       )
@@ -83,10 +84,38 @@ html(lang='en')
     div.container(role='main')
       div.contents
         h1#title
+
+        div#search.pull-right
+          input.typeahead(type="text" placeholder="Search")
+        br
+
         div.improvisation.main
 
-    script(src='/javascripts/grid/grid.js')
+    script(src='/javascripts/grid/grid.js'                                 )
+    script(src='/javascripts/lib/typeahead.js/dist/typeahead.bundle.min.js')
     script.
       $(function() {
         Grid.init();
+
+        var images = new Bloodhound({
+          datumTokenizer: Bloodhound.tokenizers.whitespace('value'),
+          queryTokenizer: Bloodhound.tokenizers.whitespace,
+          remote: {
+            url   : '/search/%QUERY',
+            filter: function (images) {
+              return $.map(images, function (image) {
+                return {
+                  value: image
+                };
+              });
+            }
+          }
+        });
+
+        images.initialize();
+
+        $('#search .typeahead').typeahead(null, {
+          displayKey: 'value',
+          source    : images.ttAdapter()
+        });
       });

@@ -15,7 +15,7 @@ var curl;
 			jquery       : { location: '/javascripts/lib/jquery/jquery',         main: '.' },
 			Backbone     : { location: '/javascripts/lib/backbone-amd/backbone', main: '.' },
 			underscore   : { location: '/javascripts/lib/lodash/lodash',         main: '.' },
-			humanize     : { location: '/javascripts/lib/humanize/humanize',     main: '.' }
+      humanize     : { location: '/javascripts/lib/humanize/humanize',     main: '.' }
 		}
 	});
 }());

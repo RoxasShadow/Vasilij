@@ -14,9 +14,10 @@ var app = express();
 app.set('views',       path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-app.get('/',          routes.index);
-app.get('/folders',   folders.list);
-app.get('/folders/*', folders.list);
+app.get('/',          routes.index  );
+app.get('/folders',   folders.list  );
+app.get('/folders/*', folders.list  );
+app.get('/search/*',  folders.search);
 
 if(config.serve) {
   var folder = config.path.split('/').pop();

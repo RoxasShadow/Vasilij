@@ -4,9 +4,10 @@
  * http://opensource.org/licenses/MIT
  */
  
-var fs     = require('fs'  );
-var path   = require('path');
-var mime   = require('mime');
+var fs   = require('fs'  );
+var path = require('path');
+var mime = require('mime');
+var walk = require('walk');
 
 function Folder(config) {
   this.list = function(dir, callback) {
@@ -17,12 +18,9 @@ function Folder(config) {
     var contents = {
       dirs : [],
       files: []
-    }
+    };
 
     fs.readdir(dir, function(err, folder) {
-      if(err)
-        throw err;
-
       folder.map(function(r) {
         return dir + '/' + r;
       }).filter(function(r) {
@@ -58,6 +56,23 @@ function Folder(config) {
         contents[tag].push(fileInfo);
       });
       
+      callback(contents);
+    });
+  };
+
+  this.search = function(keyword, callback) {
+    var dir      = config.path;
+    var contents = [];
+    var walker   = walk.walk(dir);
+        keyword  = keyword.toUpperCase();
+
+    walker.on('file', function(root, fileStat, next) {
+      if(fileStat.name.toUpperCase().indexOf(keyword) > -1 && config.exts.indexOf(path.extname(fileStat.name)) > -1)
+        contents.push(root + '/' + fileStat.name);
+      next();
+    });
+    
+    walker.on('end', function() {
       callback(contents);
     });
   };
