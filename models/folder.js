@@ -30,7 +30,7 @@ function Folder(config) {
         
         var fileInfo = {
           url  : r,
-          name : r.split(config.images.path)[1],
+          name : r.split(config.images.url)[1],
           atime: file.atime,
           mtime: file.mtime,
           ctime: file.ctime
@@ -44,12 +44,12 @@ function Folder(config) {
           tag            = 'files';
           fileInfo.size  = file.size;
           fileInfo.mime  = mime.lookup(r);
-          fileInfo.thumb = r.replace(config.images.path, config.thumbs.path);
+          fileInfo.thumb = r.replace(config.images.url, config.thumbs.url);
         }
         else {
           tag               = 'dirs';
           fileInfo.contents = fs.readdirSync(r).map(function(s) {
-            return r.replace(config.images.path, config.thumbs.path) + '/' + s;
+            return r.replace(config.images.url, config.thumbs.url) + '/' + s;
           });
         }
 

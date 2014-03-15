@@ -31,6 +31,7 @@ config.maxAge = '2592000';
 // Thumbnails configuration
 config.thumbs = {
   path   : '../thumbs',
+  url    : '/thumbs',
   width  : 500,
   cpu    : 8
 };
