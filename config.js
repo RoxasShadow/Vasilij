@@ -20,8 +20,12 @@ config.exts  = [ '.jpg', '.jpeg', '.bmp', '.png', '.gif' ];
 config.sort  = {
   mode: 'DESC',      // ASC   DESC
   by  : 'lastModify' // name  lastModify
-}
+};
 
+// Image served by Vasilij will be put in browser cache for 30 days
+config.maxAge = '2592000';
+
+// Thumbnails configuration
 config.thumbs = {
   path   : '../thumbs',
   width  : 500,

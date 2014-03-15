@@ -56,17 +56,27 @@ exports.list = function(req, res) {
 };
 
 exports.img = function(req, res) {
-  var file = config.path + '/' + req.params[0];
-  var ext  = req.params[0].split('.');
-  var img  = fs.readFileSync(file);
-  res.writeHead(200, { 'Content-Type': mime.lookup(file) });
+  var file    = config.path + '/' + req.params[0];
+  var ext     = req.params[0].split('.');
+  var img     = fs.readFileSync(file);
+  var headers = {
+    'Content-Type' :  mime.lookup(file),
+    'Cache-Control': 'public, max-age=' + config.maxAge
+  }
+
+  res.writeHead(200, headers);
   res.end(img, 'binary');
 };
 
 exports.thumb = function(req, res) {
-  var file = config.thumbs.path + '/' + req.params[0];
-  var ext  = req.params[0].split('.');
-  var img  = fs.readFileSync(file);
-  res.writeHead(200, { 'Content-Type': mime.lookup(file) });
+  var file    = config.thumbs.path + '/' + req.params[0];
+  var ext     = req.params[0].split('.');
+  var img     = fs.readFileSync(file);
+  var headers = {
+    'Content-Type' :  mime.lookup(file),
+    'Cache-Control': 'public, max-age=' + config.maxAge
+  }
+
+  res.writeHead(200, headers);
   res.end(img, 'binary');
 };
