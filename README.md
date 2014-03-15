@@ -11,7 +11,7 @@ Until I don't implement the things in `TODO`, *Vasilij* will be veeeeeeeery slow
 
 What it does
 ------------
-After you have configured `config.js`, *Vasilij* provides APIs that output a JSON string containing the directory tree of given path, making eventually thumbnails for folders which have no one.
+After you have configured `config.js`, *Vasilij* provides APIs that output a JSON response containing the directory tree of given path, making eventually thumbnails for folders which have no one.
 
 *Improvisation* makes a grid with these infos with some wizardries and... that's it.
 
@@ -22,5 +22,7 @@ $ npm   install
 $ bower install
 $ npm   start
 ```
+
+If thumbnails are enabled, when you visit for the first time the home page of *Vasilij*, it will make a thumbnail for all the images you have and this process can be very slow.
 
 [Demo](http://vasilij.giovannicapuano.net)

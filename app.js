@@ -10,7 +10,6 @@ var config  = require('./config'        );
 var routes  = require('./routes'        );
 var folders = require('./routes/folders');
 
-var folder = config.path.split('/').pop();
 var app    = express();
 app.set('views',       path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -19,8 +18,15 @@ app.get('/',          routes.index);
 app.get('/folders',   folders.list);
 app.get('/folders/*', folders.list);
 
-if(config.serve)
-  app.get('/' + folder + '/*', folders.img ); 
+if(config.serve) {
+  var folder = config.path.split('/').pop();
+  app.get('/' + folder + '/*', folders.img);
+
+  if(config.thumbs.enabled) {
+    var thumb = config.thumbs.path.split('/').pop();
+    app.get('/' + thumb + '/*', folders.thumb);
+  }
+}
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(app.router);

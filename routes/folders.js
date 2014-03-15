@@ -7,9 +7,11 @@
 var fs      = require('fs'                );
 var path    = require('path'              );
 var mime    = require('mime'              );
+var thumb   = require('node-thumbnail'    ).thumb;
+var mkdirp  = require('mkdirp'            );
 var config  = require('../config'         );
-var Folder  = require('../models/folder'  );
 var Sorting = require('../helpers/sorting');
+var Folder  = require('../models/folder'  );
 
 exports.list = function(req, res) {
   var dir     = !!req.params[0] ? req.params[0] : '';
@@ -17,34 +19,56 @@ exports.list = function(req, res) {
   var sorting = new Sorting();
 
   folder.list(dir, function(folders) {
-    var contents;
+
+    if(config.thumbs.enabled) {
+      folders.dirs.forEach(function(dir) {
+        var destination = config.thumbs.path + '/' + dir.name;
+        if(!fs.existsSync(destination))
+          mkdirp.sync(destination);
+
+        thumb({
+          source     : dir.url,
+          destination: destination,
+          concurrency: config.thumbs.cpu,
+          width      : config.thumbs.width,
+          suffix     : ''
+        });
+      });
+    }
 
     switch(config.sort.by) {
     case 'name':
-      contents = {
+      var contents = {
         dirs : sorting.sortByName(folders.dirs,  config.sort.mode),
         files: sorting.sortByName(folders.files, config.sort.mode)
       }
+      res.json(contents);
       break;
     case 'lastModify':
-      contents = {
+      var contents = {
         dirs : sorting.sortByDateTime(folders.dirs,  config.sort.mode),
         files: sorting.sortByDateTime(folders.files, config.sort.mode)
       }
+      res.json(contents);
       break;
     default:
-      contents = folders;
+      res.json(folders);
     }
-
-    res.json(contents);
   });
 };
 
 exports.img = function(req, res) {
   var file = config.path + '/' + req.params[0];
   var ext  = req.params[0].split('.');
-  fs.readFile(file, function(err, img) {
-    res.writeHead(200, { 'Content-Type': mime.lookup(file) });
-    res.end(img, 'binary');
-  });
+  var img  = fs.readFileSync(file);
+  res.writeHead(200, { 'Content-Type': mime.lookup(file) });
+  res.end(img, 'binary');
+};
+
+exports.thumb = function(req, res) {
+  var file = config.thumbs.path + '/' + req.params[0];
+  var ext  = req.params[0].split('.');
+  var img  = fs.readFileSync(file);
+  res.writeHead(200, { 'Content-Type': mime.lookup(file) });
+  res.end(img, 'binary');
 };

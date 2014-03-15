@@ -46,11 +46,14 @@ function Folder(config) {
           tag            = 'files';
           fileInfo.size  = file.size;
           fileInfo.mime  = mime.lookup(r);
+
+          if(config.thumbs.enabled)
+            fileInfo.thumb = r.replace(config.path, config.thumbs.path);
         }
         else {
           tag               = 'dirs';
           fileInfo.contents = fs.readdirSync(r).map(function(s) {
-            return r + '/' + s;
+            return r.replace(config.path, config.thumbs.path) + '/' + s;
           });
         }
 

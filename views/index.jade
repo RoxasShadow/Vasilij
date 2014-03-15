@@ -16,12 +16,12 @@ html(lang='en')
     script(src='/javascripts/lib/jquery/jquery.min.js'                 )
     script(src='/javascripts/blazy.min.js'                             )
 
-    script(src='/javascripts/grid/modernizr.custom.js')
+    script(src='/javascripts/grid/modernizr.custom.js'                 )
 
     script(data-curl-run='/javascripts/run.js' src='/javascripts/lib/curl/src/curl.js')
     script(type='text/html' id='improvisation-template').
       <ul class="og-grid">
-        <% if(typeof files != 'undefined' && files.length > 0) { %>
+        <% if(files !== undefined && files.length > 0) { %>
           <% $('#uplevel').show() %>
         <% } else { %>
           <% $('#uplevel').hide() %>
@@ -55,7 +55,7 @@ html(lang='en')
                 <b>MIME:           </b> <%= f.mime                                 %><br>
                 <b>Created the:    </b> <%= humanize.naturalDay(new Date(f.ctime)) %><br>
                 <b>Modificated the:</b> <%= humanize.naturalDay(new Date(f.mtime)) %>">
-                  <img src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw== class="lazy" data-src="<%= f.url %>" width="250" height="250">
+                  <img src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw== class="lazy" data-src="<%= f.thumb %>" width="250" height="250">
             </a>
           </li>
         <% }); %>

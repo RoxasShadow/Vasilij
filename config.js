@@ -23,9 +23,10 @@ config.sort  = {
 }
 
 config.thumbs = {
-  path  : '../thumbs',
-  width : 300,
-  cpu   : 4
+  enabled: true,
+  path   : '../thumbs',
+  width  : 500,
+  cpu    : 8
 };
 
 module.exports = config;
