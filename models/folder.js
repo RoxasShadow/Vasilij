@@ -29,7 +29,7 @@ function Folder(config) {
         var file = fs.statSync(r);
         
         var fileInfo = {
-          url  : r,
+          url  : r.replace(config.images.path, config.images.url),
           name : r.split(config.images.url)[1],
           atime: file.atime,
           mtime: file.mtime,
@@ -44,12 +44,12 @@ function Folder(config) {
           tag            = 'files';
           fileInfo.size  = file.size;
           fileInfo.mime  = mime.lookup(r);
-          fileInfo.thumb = r.replace(config.images.url, config.thumbs.url);
+          fileInfo.thumb = r.replace(config.images.path, config.thumbs.url);
         }
         else {
           tag               = 'dirs';
           fileInfo.contents = fs.readdirSync(r).map(function(s) {
-            return r.replace(config.images.url, config.thumbs.url) + '/' + s;
+            return r.replace(config.images.path, config.thumbs.url) + '/' + s;
           });
         }
 
@@ -68,7 +68,7 @@ function Folder(config) {
 
     walker.on('file', function(root, fileStat, next) {
       if(fileStat.name.toUpperCase().indexOf(keyword) > -1 && config.exts.indexOf(path.extname(fileStat.name)) > -1)
-        contents.push(root + '/' + fileStat.name);
+        contents.push(root.replace(config.images.path, config.images.url) + '/' + fileStat.name);
       next();
     });
     

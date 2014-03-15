@@ -25,7 +25,7 @@ exports.list = function(req, res) {
         mkdirp.sync(destination);
 
       thumb({
-        source     : dir.url,
+        source     : dir.url.replace(config.images.url, config.images.path),
         destination: destination,
         concurrency: config.thumbs.cpu,
         width      : config.thumbs.width,
