@@ -15,7 +15,7 @@ Usage
 -----
 ```
 $ npm   install
-$ npm   install bower
+$ npm   install -g bower
 $ bower install
 $ npm   start
 ```
