@@ -19,6 +19,6 @@ $ bower install
 $ npm   start
 ```
 
-If thumbnails are enabled, when you visit for the first time the home page of *Vasilij*, it will make a thumbnail for all the images you have and this process can be very slow.
+If thumbnails are enabled, when you visit for the first time the home page of *Vasilij*, it will make a thumbnail for all the images you have and this process can be very slow. You have also to install [ImageMagick](http://www.imagemagick.org).
 
 [Demo](http://vasilij.giovannicapuano.net)
