@@ -57,10 +57,10 @@ html(lang='en')
               data-largesrc   = "<%= f.url %>"
               data-title      = "<%= f.url.split('/').pop().split('.')[0] %>"
               data-description= "
-                <b>Size:           </b> <%= humanize.filesize(f.size)              %><br>
-                <b>MIME:           </b> <%= f.mime                                 %><br>
-                <b>Created the:    </b> <%= humanize.naturalDay(new Date(f.ctime)) %><br>
-                <b>Modificated the:</b> <%= humanize.naturalDay(new Date(f.mtime)) %>">
+                <b>Size:      </b> <%= humanize.filesize(f.size)              %><br>
+                <b>MIME:      </b> <%= f.mime                                 %><br>
+                <b>Created on:</b> <%= humanize.naturalDay(new Date(f.ctime)) %><br>
+                <b>Changed on:</b> <%= humanize.naturalDay(new Date(f.mtime)) %>">
                   <img
                   src     = data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
                   class   = "lazy"
