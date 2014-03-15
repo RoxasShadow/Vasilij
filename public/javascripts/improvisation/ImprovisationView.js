@@ -39,6 +39,10 @@ define(function(require) {
 				var items = $(elements[i] + '</li>').appendTo(gridElem);
 				Grid.addItems(items);
 			}
+      
+      new Blazy({
+      	selector: '.lazy'
+      });
 		}
 	});
 })

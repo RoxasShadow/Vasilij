@@ -13,6 +13,9 @@ html(lang='en')
     link(rel='stylesheet' href='/stylesheets/grid/default.css'         )
     link(rel='stylesheet' href='/stylesheets/grid/component.css'       )
 
+    script(src='/javascripts/lib/jquery/jquery.min.js'                 )
+    script(src='/javascripts/blazy.min.js'                             )
+
     script(src='/javascripts/grid/modernizr.custom.js')
 
     script(data-curl-run='/javascripts/run.js' src='/javascripts/lib/curl/src/curl.js')
@@ -29,7 +32,7 @@ html(lang='en')
             <li>
               <a href="#/wall/<%= d.name %>">
                 <%= d.name %>
-                <img src="<%= d.contents.slice(-1) %>" width="250" height="250"><br>
+                <img src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw== class="lazy" data-src="<%= d.contents.slice(-1) %>" width="250" height="250"><br>
               </a>
             </li>
           <% }); %>
@@ -52,7 +55,7 @@ html(lang='en')
                 <b>MIME:           </b> <%= f.mime                                 %><br>
                 <b>Created the:    </b> <%= humanize.naturalDay(new Date(f.ctime)) %><br>
                 <b>Modificated the:</b> <%= humanize.naturalDay(new Date(f.mtime)) %>">
-                  <img src="<%= f.url %>" width="250" height="250">
+                  <img src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw== class="lazy" data-src="<%= f.url %>" width="250" height="250">
             </a>
           </li>
         <% }); %>
@@ -72,8 +75,7 @@ html(lang='en')
         h1#title
         div.improvisation.main
 
-    script(src='/javascripts/lib/jquery/jquery.min.js')
-    script(src='/javascripts/grid/grid.js'            )
+    script(src='/javascripts/grid/grid.js')
     script.
       $(function() {
         Grid.init();
