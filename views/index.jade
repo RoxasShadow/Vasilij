@@ -34,7 +34,7 @@ html(lang='en')
               <a href="#/wall/<%= d.name %>">
                 <%= d.name %>
                 <img
-                  src     = data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
+                  src     = "/loader.gif"
                   class   = "lazy"
                   data-src= "<%= d.contents.slice(-1) %>"
                   width   = "250"
@@ -62,7 +62,7 @@ html(lang='en')
                 <b>Created on:</b> <%= humanize.naturalDay(new Date(f.ctime)) %><br>
                 <b>Changed on:</b> <%= humanize.naturalDay(new Date(f.mtime)) %>">
                   <img
-                  src     = data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
+                  src     = "/loader.gif"
                   class   = "lazy"
                   data-src= "<%= f.thumb %>"
                   width   = "250"
