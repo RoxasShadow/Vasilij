@@ -20,6 +20,7 @@ $ bower install
 $ npm   start
 ```
 
-When you visit for the first time the home page of *Vasilij*, it will make a thumbnail for every image it finds and this process can be very slow. You have also to install [ImageMagick](http://www.imagemagick.org).
+When you visit for the first time the home page of *Vasilij*, it will make a thumbnail for every image it finds.
+This process can be very slow. You have also to install [ImageMagick](http://www.imagemagick.org).
 
 [Demo](http://vasilij.giovannicapuano.net)
