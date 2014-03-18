@@ -36,4 +36,11 @@ config.thumbs = {
   cpu    : 8
 };
 
+// HTTP basic authentication
+config.auth = {
+  enabled : false,
+  username: 'Vasilij',
+  password: 'dat art'
+};
+
 module.exports = config;

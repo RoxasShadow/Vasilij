@@ -20,6 +20,7 @@ Feature
 - Lazy loading
 - Browser caching
 - Grids
+- HTTP basic authentication
 - ???
 
 Usage

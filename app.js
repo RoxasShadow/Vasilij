@@ -11,6 +11,10 @@ var routes  = require('./routes'        );
 var folders = require('./routes/folders');
 
 var app = express();
+
+if(config.auth.enabled)
+  app.use(express.basicAuth(config.auth.username, config.auth.password));
+
 app.set('views',       path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
