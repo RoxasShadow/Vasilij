@@ -4,14 +4,14 @@
  * http://opensource.org/licenses/MIT
  */
  
-var fs      = require('fs'                );
-var path    = require('path'              );
-var mime    = require('mime'              );
-var thumb   = require('node-thumbnail'    ).thumb;
-var mkdirp  = require('mkdirp'            );
-var config  = require('../config'         );
-var Sorting = require('../helpers/sorting');
-var Folder  = require('../models/folder'  );
+var fs      = require('fs'            );
+var path    = require('path'          );
+var mime    = require('mime'          );
+var thumb   = require('node-thumbnail').thumb;
+var mkdirp  = require('mkdirp'        );
+var config  = require('../config'     );
+var Sorting = require('../lib/sorting');
+var Folder  = require('../lib/folder' );
 
 exports.list = function(req, res) {
   var dir     = !!req.params[0] ? req.params[0] : '';
