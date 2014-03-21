@@ -11,8 +11,8 @@ After you have configured `config.js`, *Vasilij* provides APIs that output a JSO
 
 *Improvisation* makes a grid with these infos with some wizardries and... that's it.
 
-Feature
--------
+Features
+--------
 - ROFL-Scaling
 - Thumbnails
 - Customizable paths, URLs and sorting order
