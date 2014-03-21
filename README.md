@@ -23,6 +23,11 @@ Features
 - HTTP basic authentication
 - ???
 
+Tips
+----
+If you don't allow *Vasilij* to serve static resources, you should say your webserver to cache them.
+Then, seize the opportunity and enable gzip compression too.
+
 Usage
 -----
 ```
