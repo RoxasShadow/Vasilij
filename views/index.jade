@@ -109,25 +109,42 @@ html(lang='en')
           queryTokenizer: Bloodhound.tokenizers.whitespace,
           remote: {
             url   : '/search/%QUERY',
-            filter: function (images) {
-              return $.map(images, function (image) {
+            filter: function(results) {
+              return $.map(results.dirs, function(result) {
                 return {
-                  value: image
+                  dir: result,
                 };
-              });
+              }).concat($.map(results.files, function(result) {
+                return {
+                  file: result,
+                };
+              }));
             }
           }
         });
 
         images.initialize();
 
-        $('#search .typeahead').typeahead(null, {
-          displayKey: 'value',
-          source    : images.ttAdapter()
+        var search = $('#search .typeahead');
+
+        search.typeahead({ highlight: true }, {
+          displayKey: function(r) {
+            return r.dir || r.file.split('/').pop();
+          },
+          source: images.ttAdapter(),
+          templates: {
+            suggestion: function(r) {
+              return r.dir ? '<p class="dir">' + r.dir + '</p>' : '<p class="file">' + r.file.split('/').pop() + '</p>';
+            }
+          }
         });
 
-        $('#search .typeahead').on('typeahead:selected', function(e, s) {
-          window.open(s.value);
-          $('#search .typeahead').val('');
+        $('#search .typeahead').on('typeahead:selected', function(e, r) {
+          if(r.dir)
+            new Backbone.Router().navigate('#/wall/' + r.dir, { trigger: true });
+          else
+            window.open(r.file);
+
+          search.typeahead('val', '');
         });
       });

@@ -63,8 +63,8 @@ exports.search = function(req, res) {
   var keyword = req.params[0];
   var folder  = new Folder(config);
 
-  folder.search(keyword, function(files) {
-    res.json(files);
+  folder.search(keyword, function(results) {
+    res.json(results);
   });
 };
 
