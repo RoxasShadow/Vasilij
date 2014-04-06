@@ -70,3 +70,13 @@ p#uplevel {
 .file {
   color: green;
 }
+
+li > a:before {
+  content: ' ';
+  display: inline-block;
+  vertical-align: middle;
+}
+
+li > a > img {
+  max-height: 225px;
+}
